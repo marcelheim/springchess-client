@@ -28,10 +28,13 @@ const ChessContext = React.createContext({
         board: {
             position: undefined,
             halfMoveCounter: undefined,
-            boardId: undefined
+            boardId: undefined,
+            activePlayer: undefined,
+            moveCounter: undefined,
+            checkMate: undefined
         },
         player: undefined,
-        gameList: []
+        gameList: [],
     },
     setChess: () => {}
 })

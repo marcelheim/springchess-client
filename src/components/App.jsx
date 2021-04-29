@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import springChessDark from '../themes/springChessDark';
 import { ThemeProvider } from '@material-ui/styles';
-import {Button, Container, CssBaseline, makeStyles} from '@material-ui/core';
+import {Container, CssBaseline, makeStyles} from '@material-ui/core';
 import NavBar from "./NavBar.jsx";
 import {ChessContext, UserContext, Web3Context} from "../contexts/contexts";
 import detectEthereumProvider from "@metamask/detect-provider";
@@ -34,12 +34,14 @@ function App() {
         board: {
             position: undefined,
             halfMoveCounter: undefined,
-            boardId: undefined
+            boardId: undefined,
+            activePlayer: undefined,
+            moveCounter: undefined,
+            checkMate: undefined
         },
         player: undefined,
         gameList: []
     })
-
 
 
     useEffect(() => {
@@ -57,7 +59,6 @@ function App() {
                         <CssBaseline/>
                         <NavBar />
                         <Container>
-                            {user.accessToken}
                             <Chess/>
                         </Container>
                     </ThemeProvider>

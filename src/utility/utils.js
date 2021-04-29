@@ -1,6 +1,6 @@
 const createGame = async (name, userContext) => {
     try {
-        await fetch("/api/chess/createGame=name=" + name, {
+        await fetch("/api/chess/createGame?name=" + name, {
             headers: new Headers({
                 Authorization: userContext.user.accessToken
             })
@@ -34,44 +34,53 @@ const leaveGame = async (gameId, userContext) => {
     }
 }
 
-const fetchActiveGame = async (userContext, chessContext) => {
+const move = async (gameId, move, userContext) => {
     try {
-        const game = await (await fetch("/api/chess/getJoinedGame", {
+        await (await fetch("/api/chess/move?gameId=" + gameId + "&move=" +  move, {
             headers: new Headers({
                 Authorization: userContext.user.accessToken
             })
-        })).json();
-        chessContext.setChess({...chessContext.chess, game: game})
+        }));
     } catch (e) {
         console.error(e)
     }
 }
 
-const fetchBoard = async (gameId, userContext, chessContext) => {
+const fetchActiveGame = async (userContext) => {
     try {
-        const board = await (await fetch("/api/chess/getBoard?gameId=" + gameId, {
+        return await (await fetch("/api/chess/getJoinedGame", {
             headers: new Headers({
                 Authorization: userContext.user.accessToken
             })
         })).json();
-        chessContext.setChess({...chessContext.chess, board: board})
     } catch (e) {
         console.error(e)
     }
 }
 
-const fetchGames = async (userContext, chessContext) => {
+const fetchBoard = async (gameId, userContext) => {
     try {
-        const games = await (await fetch("/api/chess/getGames", {
+        return await (await fetch("/api/chess/getBoard?gameId=" + gameId, {
             headers: new Headers({
                 Authorization: userContext.user.accessToken
             })
         })).json();
-        chessContext.setChess({...chessContext.chess, gameList: games})
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+const fetchGames = async (userContext) => {
+    try {
+        return await (await fetch("/api/chess/getGames", {
+            headers: new Headers({
+                Authorization: userContext.user.accessToken
+            })
+        })).json();
     } catch (e) {
         console.error(e)
     }
 }
 
 
-export {fetchGames, createGame, joinGame, leaveGame, fetchActiveGame, fetchBoard}
+export {fetchGames, createGame, joinGame, leaveGame, fetchActiveGame, fetchBoard, move}

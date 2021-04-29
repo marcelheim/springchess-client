@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {Button, makeStyles} from "@material-ui/core";
 import {UserContext, Web3Context} from "../contexts/contexts";
 

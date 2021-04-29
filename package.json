@@ -1,5 +1,5 @@
 {
-  "name": "winbay-client",
+  "name": "springchess-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
     "chessboardjsx": "^2.4.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-interval": "^2.1.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1",
     "web3": "^1.3.5"
